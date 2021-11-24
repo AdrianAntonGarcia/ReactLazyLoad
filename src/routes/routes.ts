@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from 'react';
+import { NoLazy } from '../01-lazyload/pages/NoLazy';
 
 type JSXComponent = () => JSX.Element;
 
@@ -12,9 +13,9 @@ interface Route {
 /**
  * El comentario es para poner un nombre al chunk para cuándo salga el la red de la consola
  */
-const Lazy1 = lazy(
+const LazyLayout = lazy(
   () =>
-    import(/*webpackChunkName: "LazyPage1"*/ '../01-lazyload/pages/LazyPage1')
+    import(/*webpackChunkName: "LazyPage1"*/ '../01-lazyload/layout/LazyLayout')
 );
 const Lazy2 = lazy(
   () =>
@@ -25,23 +26,21 @@ const Lazy3 = lazy(
     import(/*webpackChunkName: "LazyPage3"*/ '../01-lazyload/pages/LazyPage3')
 );
 
+/**
+ * El * (comodín) indica que todas las rutas hijas van a pasar por ese path
+ * Cuándo encuentre ese segmento, entra en ese componente y busca el siguiente router
+ */
 export const routes: Route[] = [
   {
-    to: '/lazy1',
-    path: 'lazy1',
-    Component: Lazy1,
+    to: '/lazyload/',
+    path: '/lazyload/*',
+    Component: LazyLayout,
     name: 'Lazy-1',
   },
   {
-    to: '/lazy2',
-    path: 'lazy2',
-    Component: Lazy2,
-    name: 'Lazy-2',
-  },
-  {
-    to: '/lazy3',
-    path: 'lazy3',
-    Component: Lazy3,
-    name: 'Lazy-3',
+    to: '/no-lazy',
+    path: 'no-lazy',
+    Component: NoLazy,
+    name: 'No Lazy',
   },
 ];
