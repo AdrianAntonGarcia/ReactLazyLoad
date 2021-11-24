@@ -6,6 +6,9 @@ import { routes } from './routes';
 
 export const Navigation = () => {
   return (
+    /**
+     * El suspense permite cargar una página mientras el lazy loading está cargando los modulos
+     */
     <Suspense fallback={<span>Loading...</span>}>
       <BrowserRouter>
         <div className="main-layout">
