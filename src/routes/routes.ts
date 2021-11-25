@@ -11,6 +11,7 @@ interface Route {
 }
 
 /**
+ * Así creamos los modulos de lazyload
  * El comentario es para poner un nombre al chunk para cuándo salga el la red de la consola
  */
 const LazyLayout = lazy(
